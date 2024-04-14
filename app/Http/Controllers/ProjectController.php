@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Http\Resources\ProjectResource;
 
 class ProjectController extends Controller
 {
@@ -13,10 +14,15 @@ class ProjectController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return inertia("Project/Index", [
-        ]);
-    }
+{  
+    $query = Project::query();
+
+    $projects = $query->paginate(10)->onEachSide(1);
+
+    return inertia("Project/Index", [
+        "projects" => ProjectResource::collection($projects),
+    ]);
+}
 
     /**
      * Show the form for creating a new resource.
