@@ -198,7 +198,7 @@ export default function Index({ auth, projects, queryParams = null, success }) {
                             Edit
                           </Link>
                           <button
-                            onClick={deleteProject}
+                            onClick={() => deleteProject(project)}
                             href={route("project.destroy", project.id)}
                             className="font-medium text-red-600 dark:text-red-500 hover:underline mx-1"
                           >
