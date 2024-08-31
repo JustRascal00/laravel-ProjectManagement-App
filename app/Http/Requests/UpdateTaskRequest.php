@@ -29,7 +29,7 @@ class UpdateTaskRequest extends FormRequest
             'due_date' => ['nullable', 'date'],
             'project_id' => ['required','exists:projects,id'],
             'assigned_user_id' => ['required','exists:users,id'],
-            'prioity' => ['required', Rule::in(['low', 'medium', 'high'])],
+            'priority' => ['required', Rule::in(['low', 'medium', 'high'])],
             'status' => ['required', Rule::in(['pending', 'in_progress', 'completed'])],
         ];
     }
