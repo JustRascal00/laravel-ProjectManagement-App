@@ -1,8 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { USER_STATUS_CLASS_MAP, USER_STATUS_TEXT_MAP } from "@/constants";
 import { Head } from "@inertiajs/react";
+import { USER_STATUS_CLASS_MAP, USER_STATUS_TEXT_MAP } from "@/constants.jsx";
 import TasksTable from "../Task/TasksTable";
-
 export default function Show({ auth, user, tasks, queryParams }) {
   return (
     <AuthenticatedLayout
@@ -14,7 +13,7 @@ export default function Show({ auth, user, tasks, queryParams }) {
       }
     >
       <Head title={`User "${user.name}"`} />
-      <div className="pb-12">
+      <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div>
@@ -31,14 +30,13 @@ export default function Show({ auth, user, tasks, queryParams }) {
                     <label className="font-bold text-lg">User ID</label>
                     <p className="mt-1">{user.id}</p>
                   </div>
-                </div>
-                <div>
                   <div className="mt-4">
                     <label className="font-bold text-lg">User Name</label>
                     <p className="mt-1">{user.name}</p>
                   </div>
+
                   <div className="mt-4">
-                    <label className="font-bold text-lg"> User Status</label>
+                    <label className="font-bold text-lg">User Status</label>
                     <p className="mt-1">
                       <span
                         className={
@@ -66,12 +64,11 @@ export default function Show({ auth, user, tasks, queryParams }) {
                   </div>
                   <div className="mt-4">
                     <label className="font-bold text-lg">Updated By</label>
-                    <p className="mt-1">
-                      {user.UpdatedBy ? user.UpdatedBy.name : "N/A"}
-                    </p>
+                    <p className="mt-1">{user.updatedBy.name}</p>
                   </div>
                 </div>
               </div>
+
               <div className="mt-4">
                 <label className="font-bold text-lg">User Description</label>
                 <p className="mt-1">{user.description}</p>
@@ -81,7 +78,7 @@ export default function Show({ auth, user, tasks, queryParams }) {
         </div>
       </div>
 
-      <div className="py-12">
+      <div className="pb-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div className="p-6 text-gray-900 dark:text-gray-100">
